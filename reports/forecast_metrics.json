@@ -1,0 +1,74 @@
+{
+  "forecast": [
+    {
+      "horizon_days": 7,
+      "n_test": 2771,
+      "mae_model": 0.05415546757305872,
+      "mae_persistence": 0.09130805756044748,
+      "mae_mean_rate": 0.060513922637819136,
+      "rmse_model": 0.06807428710427518,
+      "rmse_persistence": 0.11119315144567851,
+      "rmse_mean_rate": 0.07652773621043574,
+      "coverage_80": 0.7268134247564056,
+      "mean_interval_width": 0.15275132927346077,
+      "skill_vs_persistence": 0.4068927866830714,
+      "skill_vs_mean_rate": 0.10507425047978303
+    },
+    {
+      "horizon_days": 14,
+      "n_test": 2643,
+      "mae_model": 0.06565772321449564,
+      "mae_persistence": 0.1602579281750536,
+      "mae_mean_rate": 0.07861715388738795,
+      "rmse_model": 0.08339076549982512,
+      "rmse_persistence": 0.18767217524966828,
+      "rmse_mean_rate": 0.09747075922801075,
+      "coverage_80": 0.7128263337116912,
+      "mean_interval_width": 0.18160892605186202,
+      "skill_vs_persistence": 0.5902996877460183,
+      "skill_vs_mean_rate": 0.16484227718871036
+    },
+    {
+      "horizon_days": 30,
+      "n_test": 2377,
+      "mae_model": 0.1073398583088584,
+      "mae_persistence": 0.33581890022437244,
+      "mae_mean_rate": 0.11956843848216236,
+      "rmse_model": 0.13494482885939615,
+      "rmse_persistence": 0.37166866293405526,
+      "rmse_mean_rate": 0.14581267577118148,
+      "coverage_80": 0.6003365586874211,
+      "mean_interval_width": 0.22304060599529554,
+      "skill_vs_persistence": 0.6803638561226278,
+      "skill_vs_mean_rate": 0.10227264258475932
+    }
+  ],
+  "importance": {
+    "exch_idx": 0.01563561421258152,
+    "rf_state": 0.019308050668880954,
+    "days_since_clean": 0.0057941345064560015,
+    "flow_mean": 0.00034863805146919253,
+    "api_mean": 0.0007547940861721503,
+    "sulfur_mean": 0.006278233870236712
+  },
+  "plateau_fitted": [
+    4.71,
+    3.97,
+    6.35,
+    3.66,
+    3.81,
+    5.94,
+    4.42,
+    5.51
+  ],
+  "plateau_true": [
+    5.0,
+    4.6,
+    6.0,
+    4.2,
+    5.4,
+    6.4,
+    4.4,
+    5.0
+  ]
+}

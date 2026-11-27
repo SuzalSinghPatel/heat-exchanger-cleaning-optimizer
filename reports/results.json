@@ -1,0 +1,272 @@
+{
+  "dataset": {
+    "rows": 8760,
+    "exchangers": 8,
+    "days": 1095,
+    "cleaning_events_history": 36,
+    "train_days": 730
+  },
+  "forecast": [
+    {
+      "horizon_days": 7,
+      "n_test": 2771,
+      "mae_model": 0.05415546757305872,
+      "mae_persistence": 0.09130805756044748,
+      "mae_mean_rate": 0.060513922637819136,
+      "rmse_model": 0.06807428710427518,
+      "rmse_persistence": 0.11119315144567851,
+      "rmse_mean_rate": 0.07652773621043574,
+      "coverage_80": 0.7268134247564056,
+      "mean_interval_width": 0.15275132927346077,
+      "skill_vs_persistence": 0.4068927866830714,
+      "skill_vs_mean_rate": 0.10507425047978303
+    },
+    {
+      "horizon_days": 14,
+      "n_test": 2643,
+      "mae_model": 0.06565772321449564,
+      "mae_persistence": 0.1602579281750536,
+      "mae_mean_rate": 0.07861715388738795,
+      "rmse_model": 0.08339076549982512,
+      "rmse_persistence": 0.18767217524966828,
+      "rmse_mean_rate": 0.09747075922801075,
+      "coverage_80": 0.7128263337116912,
+      "mean_interval_width": 0.18160892605186202,
+      "skill_vs_persistence": 0.5902996877460183,
+      "skill_vs_mean_rate": 0.16484227718871036
+    },
+    {
+      "horizon_days": 30,
+      "n_test": 2377,
+      "mae_model": 0.1073398583088584,
+      "mae_persistence": 0.33581890022437244,
+      "mae_mean_rate": 0.11956843848216236,
+      "rmse_model": 0.13494482885939615,
+      "rmse_persistence": 0.37166866293405526,
+      "rmse_mean_rate": 0.14581267577118148,
+      "coverage_80": 0.6003365586874211,
+      "mean_interval_width": 0.22304060599529554,
+      "skill_vs_persistence": 0.6803638561226278,
+      "skill_vs_mean_rate": 0.10227264258475932
+    }
+  ],
+  "importance": {
+    "exch_idx": 0.01563561421258152,
+    "rf_state": 0.019308050668880954,
+    "days_since_clean": 0.0057941345064560015,
+    "flow_mean": 0.00034863805146919253,
+    "api_mean": 0.0007547940861721503,
+    "sulfur_mean": 0.006278233870236712
+  },
+  "plateau_fitted": [
+    4.71,
+    3.97,
+    6.35,
+    3.66,
+    3.81,
+    5.94,
+    4.42,
+    5.51
+  ],
+  "plateau_true": [
+    5.0,
+    4.6,
+    6.0,
+    4.2,
+    5.4,
+    6.4,
+    4.4,
+    5.0
+  ],
+  "backtest": {
+    "per_year_usd": {
+      "Fixed 120 d": {
+        "total": 5721936.020354594,
+        "fouling": 2476962.6870212606,
+        "downtime": 2303640.0,
+        "cleaning": 941333.3333333334,
+        "cleanings_per_year": 23.666666666666668,
+        "total_std": 71992.32879842687
+      },
+      "Fixed 150 d": {
+        "total": 5538623.570038946,
+        "fouling": 2933370.2367056133,
+        "downtime": 1843920.0,
+        "cleaning": 761333.3333333334,
+        "cleanings_per_year": 19.0,
+        "total_std": 101150.98574064788
+      },
+      "Fixed 180 d": {
+        "total": 5446863.341413762,
+        "fouling": 3298570.0080804294,
+        "downtime": 1524960.0,
+        "cleaning": 623333.3333333334,
+        "cleanings_per_year": 15.666666666666666,
+        "total_std": 144869.3740924278
+      },
+      "Fixed 210 d": {
+        "total": 5723295.232791496,
+        "fouling": 3726948.566124829,
+        "downtime": 1417680.0,
+        "cleaning": 578666.6666666666,
+        "cleanings_per_year": 14.333333333333334,
+        "total_std": 69119.04209176947
+      },
+      "Fixed 240 d": {
+        "total": 5625150.942516212,
+        "fouling": 3923244.2758495463,
+        "downtime": 1209240.0,
+        "cleaning": 492666.6666666667,
+        "cleanings_per_year": 12.333333333333334,
+        "total_std": 108013.39877590067
+      },
+      "Fixed 300 d": {
+        "total": 5842722.888375221,
+        "fouling": 4506376.221708556,
+        "downtime": 949680.0,
+        "cleaning": 386666.6666666667,
+        "cleanings_per_year": 9.666666666666666,
+        "total_std": 171472.3850098038
+      },
+      "ML optimiser": {
+        "total": 5530474.611304954,
+        "fouling": 2995853.277971621,
+        "downtime": 1805688.0,
+        "cleaning": 728933.3333333334,
+        "cleanings_per_year": 17.93333333333333,
+        "total_std": 113655.44999652995
+      },
+      "Never clean": {
+        "total": 8939524.863831045,
+        "fouling": 8939524.863831045,
+        "downtime": 0.0,
+        "cleaning": 0.0,
+        "cleanings_per_year": 0.0,
+        "total_std": 133814.08556167185
+      },
+      "Operator (status quo)": {
+        "total": 5763022.8859276995,
+        "fouling": 3985993.552594365,
+        "downtime": 1268496.0,
+        "cleaning": 508533.3333333333,
+        "cleanings_per_year": 12.4,
+        "total_std": 97786.22691011567
+      },
+      "Threshold 1.5": {
+        "total": 6559647.752291708,
+        "fouling": 1829701.0856250413,
+        "downtime": 3386880.0,
+        "cleaning": 1343066.6666666667,
+        "cleanings_per_year": 31.8,
+        "total_std": 142764.4073367018
+      },
+      "Threshold 2": {
+        "total": 5793813.087565626,
+        "fouling": 2383837.087565626,
+        "downtime": 2443176.0,
+        "cleaning": 966800.0,
+        "cleanings_per_year": 22.8,
+        "total_std": 125241.51686711001
+      },
+      "Threshold 2.5": {
+        "total": 5587656.169449003,
+        "fouling": 3012248.1694490043,
+        "downtime": 1847808.0,
+        "cleaning": 727599.9999999999,
+        "cleanings_per_year": 17.0,
+        "total_std": 83263.78815031833
+      },
+      "Threshold 3": {
+        "total": 5642477.258436197,
+        "fouling": 3639031.9251028644,
+        "downtime": 1439712.0,
+        "cleaning": 563733.3333333333,
+        "cleanings_per_year": 13.066666666666666,
+        "total_std": 109961.81783564751
+      },
+      "Threshold 3.5": {
+        "total": 5867335.045735894,
+        "fouling": 4284593.71240256,
+        "downtime": 1138608.0,
+        "cleaning": 444133.3333333333,
+        "cleanings_per_year": 10.2,
+        "total_std": 96843.01343774928
+      },
+      "Threshold 4": {
+        "total": 6172508.831029029,
+        "fouling": 4982964.831029028,
+        "downtime": 858744.0,
+        "cleaning": 330799.99999999994,
+        "cleanings_per_year": 7.4,
+        "total_std": 82813.47819869292
+      }
+    },
+    "tuned_on_validation": {
+      "fixed": "Fixed 180 d",
+      "threshold": "Threshold 2.5"
+    },
+    "best_in_hindsight": {
+      "fixed": "Fixed 180 d",
+      "threshold": "Threshold 2.5"
+    },
+    "comparisons": {
+      "vs_operator": {
+        "other": "Operator (status quo)",
+        "mean_saving_pct": 4.030766413153531,
+        "min_saving_pct": 1.9631025852256179,
+        "max_saving_pct": 5.807922300212942,
+        "scenarios_won": 5,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": 232548.27462274506
+      },
+      "vs_never_clean": {
+        "other": "Never clean",
+        "mean_saving_pct": 38.13743028210628,
+        "min_saving_pct": 37.27571316502654,
+        "max_saving_pct": 38.8124443291304,
+        "scenarios_won": 5,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": 3409050.252526091
+      },
+      "vs_tuned_fixed": {
+        "other": "Fixed 180 d",
+        "mean_saving_pct": -1.5749835896087048,
+        "min_saving_pct": -5.062275898493329,
+        "max_saving_pct": 1.2701269106397906,
+        "scenarios_won": 2,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": -83611.26989119183
+      },
+      "vs_tuned_threshold": {
+        "other": "Threshold 2.5",
+        "mean_saving_pct": 1.019031470199696,
+        "min_saving_pct": -1.3286638029234688,
+        "max_saving_pct": 3.0308057201463345,
+        "scenarios_won": 3,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": 57181.55814404972
+      },
+      "vs_hindsight_fixed": {
+        "other": "Fixed 180 d",
+        "mean_saving_pct": -1.5749835896087048,
+        "min_saving_pct": -5.062275898493329,
+        "max_saving_pct": 1.2701269106397906,
+        "scenarios_won": 2,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": -83611.26989119183
+      },
+      "vs_hindsight_threshold": {
+        "other": "Threshold 2.5",
+        "mean_saving_pct": 1.019031470199696,
+        "min_saving_pct": -1.3286638029234688,
+        "max_saving_pct": 3.0308057201463345,
+        "scenarios_won": 3,
+        "n_scenarios": 5,
+        "mean_saving_usd_per_year": 57181.55814404972
+      }
+    },
+    "n_test_scenarios": 5,
+    "n_validation_scenarios": 3,
+    "years_per_scenario": 3.0
+  }
+}
