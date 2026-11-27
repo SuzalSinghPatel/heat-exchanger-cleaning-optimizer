@@ -56,7 +56,7 @@ def build_blocks(res):
     B.append(("p",
               "Crude preheat exchangers slowly foul, which forces the furnace to burn extra fuel; cleaning removes the "
               "fouling but costs money and takes the exchanger out of service. We build a two-stage decision-support "
-              "system. A physics-informed gradient-boosting model forecasts the fouling resistance of every exchanger "
+              "system. A physics-informed Random Forest regression model forecasts the fouling resistance of every exchanger "
               "with calibrated 80 % prediction intervals, and a mixed-integer program turns those forecasts into a "
               "cleaning calendar that respects crew capacity. Because no plant data was available, the data is "
               f"synthetic and produced by a documented fouling model. On the held-out year the 7, 14 and 30-day "
@@ -121,14 +121,14 @@ def build_blocks(res):
               "windows without a cleaning."))
     B.append(("h2", "3.2 Fouling forecast: physics-informed hybrid"))
     B.append(("p",
-              "A first version used plain gradient boosting. It forecast well one week ahead, but when rolled forward "
+              "A first version used a plain tree-based model. It forecast well one week ahead, but when rolled forward "
               "for months it systematically under-predicted fouling, because operators always cleaned before the plateau "
               "and a tree model cannot extrapolate beyond the fouling levels it has seen. The final model therefore "
               "combines physics and machine learning."))
     B.append(("bullets", [
         "**Physics.** For each exchanger a Kern-Seaton law `dRf/dt = beta (R* - Rf)` is fitted by least squares, "
         "giving the physically expected change over h days: `p_h = (R* - Rf)(1 - exp(-beta h))`.",
-        "**ML.** Gradient boosting (scikit-learn `HistGradientBoostingRegressor`, quantile loss at 0.1, 0.5 and 0.9) "
+        "**ML.** Random Forest regression (scikit-learn `RandomForestRegressor`) "
         "learns the multiplier `actual change / p_h` from the crude slate, flow, run age and exchanger. The forecast "
         "is `p_h` times the multiplier, so long forecasts approach the plateau instead of running away.",
         "**Intervals.** The 80 % band is widened with split-conformal calibration on the last 120 training days "
@@ -402,7 +402,7 @@ def readme_text(res):
 
 Crude preheat exchangers slowly foul, which makes the furnace burn extra fuel. Cleaning fixes it but costs money and
 takes the exchanger out of service. This project **forecasts fouling for every exchanger** and **recommends which to
-clean and when**, using a physics-informed gradient-boosting model and a mixed-integer scheduler, with a Streamlit
+clean and when**, using a physics-informed Random Forest regression model and a mixed-integer scheduler, with a Streamlit
 dashboard and a full report.
 
 > **Data is synthetic.** No real refinery data was used. `src/generate_data.py` generates it from a documented fouling
@@ -446,7 +446,7 @@ every run reproduces the same numbers.
    sensor drift. Fouling follows a Kern-Seaton asymptotic law driven by crude slate and flow.
 2. **Features** (`src/features.py`): Hampel outlier filter, gap filling, run segmentation, rolling features, targets
    that never cross a cleaning or the train/test boundary.
-3. **Forecast** (`src/forecast.py`): per-exchanger physical fouling law + gradient boosting that learns how crude
+3. **Forecast** (`src/forecast.py`): per-exchanger physical fouling law + Random Forest regression that learns how crude
    slate, flow and run age scale the rate; conformal-calibrated 80 % intervals.
 4. **Optimiser** (`src/optimize.py`): rolls forecasts forward 300 days, prices every cleaning option, and solves a
    mixed-integer program (scipy/HiGHS) with a crew limit.
