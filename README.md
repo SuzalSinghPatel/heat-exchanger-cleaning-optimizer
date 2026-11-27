@@ -2,7 +2,7 @@
 
 Crude preheat exchangers slowly foul, which makes the furnace burn extra fuel. Cleaning fixes it but costs money and
 takes the exchanger out of service. This project **forecasts fouling for every exchanger** and **recommends which to
-clean and when**, using a physics-informed gradient-boosting model and a mixed-integer scheduler, with a native desktop application and a full report.
+clean and when**, using a physics-informed Random Forest regression model and a mixed-integer scheduler, with a native desktop application and a full report.
 
 > **Data is synthetic.** No real refinery data was used. `src/generate_data.py` generates it from a documented fouling
 > model, so results show that the *method* works end to end, not that these savings would occur in a real plant.
@@ -57,8 +57,8 @@ every run reproduces the same numbers.
    sensor drift. Fouling follows a Kern-Seaton asymptotic law driven by crude slate and flow.
 2. **Features** (`src/features.py`): Hampel outlier filter, gap filling, run segmentation, rolling features, targets
    that never cross a cleaning or the train/test boundary.
-3. **Forecast** (`src/forecast.py`): per-exchanger physical fouling law + gradient boosting that learns how crude
-   slate, flow and run age scale the rate; conformal-calibrated 80 % intervals.
+3. **Forecast** (`src/forecast.py`): per-exchanger physical fouling law + Random Forest regression that learns how crude
+   slate, flow and run age scale the rate; split-conformal calibrated 80 % prediction intervals.
 4. **Optimiser** (`src/optimize.py`): rolls forecasts forward 300 days, prices every cleaning option, and solves a
    mixed-integer program (scipy/HiGHS) with a crew limit.
 5. **Backtest** (`src/backtest.py`): runs every strategy day by day against the plant model on unseen scenarios.
