@@ -131,8 +131,8 @@ def build_blocks(res):
         "**ML.** Random Forest regression (scikit-learn `RandomForestRegressor`) "
         "learns the multiplier `actual change / p_h` from the crude slate, flow, run age and exchanger. The forecast "
         "is `p_h` times the multiplier, so long forecasts approach the plateau instead of running away.",
-        "**Intervals.** The 80 % band is widened with split-conformal calibration on the last 120 training days "
-        "(conformalised quantile regression, Romano et al. 2019).",
+        "**Intervals.** A symmetric 80 % prediction band is calibrated from absolute residuals on the last 120 training days "
+        "using split-conformal calibration. These are not learned quantiles.",
         "**Baselines.** Persistence (no change) and each exchanger's average historical change.",
     ]))
     B.append(("h2", "3.3 Cleaning optimiser"))
