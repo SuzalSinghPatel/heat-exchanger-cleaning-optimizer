@@ -110,9 +110,24 @@ class HeatExchangerApp(tk.Tk):
         s.configure("Horizontal.TScale", background=BG)
 
     def _load_models(self):
-        if not C.MODEL_FILE.exists():
-            raise FileNotFoundError("Trained model not found. Please run setup.bat again or restore the models folder.")
+        # Refresh legacy bundles trained with Gradient Boosting (or older schemas).
+        # The desktop app can therefore be opened directly after updating the project.
+        valid = False
+        if C.MODEL_FILE.exists():
+            try:
+                saved = joblib.load(C.MODEL_FILE)
+                valid = (
+                    saved.get("model_type") == "random_forest_regression"
+                    and saved.get("model_version") == 2
+                )
+            except Exception:
+                valid = False
+        if not valid:
+            from src import forecast
+            forecast.main()
         self.bundle = joblib.load(C.MODEL_FILE)
+        if self.bundle.get("model_type") != "random_forest_regression":
+            raise RuntimeError("The forecasting model could not be updated. Run python run_all.py.")
         self.forecaster = Forecaster(self.bundle)
 
     def _load_default_data(self):
